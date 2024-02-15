@@ -1,0 +1,29 @@
+#!/bin/bash
+
+GIT_ROOT=$(dirname $(realpath $BASH_SOURCE))/
+# We can place custom configuration templates in such folder if needed.
+TEMPLATECONF=$(realpath "$GIT_ROOT/sources/meta-can-hat/conf")
+
+# You have to source this script, so tell the user so
+if [[ $BASH_SOURCE == $0 ]]; then
+    echo "Script is being executed!"
+    echo "Please source $0 instead by running '. $0'"
+    exit 1
+fi
+
+# Load/Initialize submodules
+if [ -n "`git submodule status`" ]; then
+    echo "Loading submodule repos..."
+    git submodule update --init --recursive
+fi
+
+echo "Configuring build environment..."
+
+rm ${GIT_ROOT}build/conf/templateconf.cfg 2>/dev/null
+
+# We could keep parallel build folders for different models
+BUILD_DIR=build
+
+# use . instead of source
+. ${GIT_ROOT}sources/poky/oe-init-build-env ${BUILD_DIR}
+

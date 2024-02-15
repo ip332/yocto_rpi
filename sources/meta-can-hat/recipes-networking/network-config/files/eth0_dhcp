@@ -1,0 +1,14 @@
+[connection]
+id=eth0 dhcp
+uuid=eb718346-3b3a-312c-9117-38764bd359e4
+type=ethernet
+interface-name=eth0
+autoconnect-priority=1
+autoconnect-retries=1
+
+[ipv4]
+method=auto
+dhcp-timeout=10
+
+[ipv6]
+method=ignore

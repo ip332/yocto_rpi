@@ -1,0 +1,18 @@
+#!/bin/bash
+#
+# This script sets up all packages required by Yocto BSP
+#
+#
+
+if [[ $(id -u) -ne 0 ]] ; then echo "Please use sudo to run this script." ; exit 1 ; fi
+
+echo "Updating packages."
+apt update
+
+apt install gawk wget git diffstat unzip texinfo gcc-multilib build-essential \
+  chrpath socat libsdl1.2-dev xterm sed cvs subversion coreutils texi2html docbook-utils \
+  python-pysqlite2 help2man make gcc g++ desktop-file-utils libgl1-mesa-dev libglu1-mesa-dev \
+  mercurial autoconf automake groff curl lzop asciidoc u-boot-tools dialog \
+  openssh-client openssh-server libssl-dev\
+  -y
+

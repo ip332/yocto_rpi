@@ -1,0 +1,3 @@
+
+Run 'bitbake can-hat-image-dev' or use one of the common targets.
+
